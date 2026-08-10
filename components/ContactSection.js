@@ -75,15 +75,15 @@ export default function ContactSection() {
               <small>info@example.com</small>
             </span>
           </a>
-          <div className="contact-channel contact-phone">
+          <a className="contact-channel contact-phone" href="tel:+38164123456">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M6.6 3.5 9 3c.8-.2 1.6.3 1.9 1l1 3c.2.7 0 1.4-.6 1.8l-1.6 1.1a14 14 0 0 0 4.5 4.5l1.1-1.6c.4-.6 1.1-.8 1.8-.6l3 1c.7.3 1.2 1.1 1 1.9l-.5 2.4c-.2.9-1 1.5-1.9 1.5C10.4 19.5 4.5 13.6 4.5 5.4c0-.9.6-1.7 1.5-1.9Z" />
             </svg>
             <span>
               <b>Telefon</b>
-              <small>Dodajte broj telefona</small>
+              <small>+381 64 123 456</small>
             </span>
-          </div>
+          </a>
           <div className="contact-note">
             Dostava je dostupna na teritoriji Beograda, uz dogovor za preuzimanje.
           </div>

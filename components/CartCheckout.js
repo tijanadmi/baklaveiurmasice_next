@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useCart } from "../context/CartContext";
 import { formatKilograms, formatPrice } from "../lib/formatters";
 
@@ -9,6 +9,7 @@ export default function CartCheckout() {
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState("");
   const [confirmationSent, setConfirmationSent] = useState(true);
+  const successMessageRef = useRef(null);
   const requiredFieldProps = {
     required: true,
     title: "Popuni ovo polje.",
@@ -19,6 +20,15 @@ export default function CartCheckout() {
     },
     onInput: (event) => event.currentTarget.setCustomValidity(""),
   };
+
+  useEffect(() => {
+    if (status !== "success" || !window.matchMedia("(max-width: 760px)").matches) return;
+
+    successMessageRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  }, [status]);
 
   async function submitOrder(event) {
     event.preventDefault();
@@ -49,14 +59,14 @@ export default function CartCheckout() {
   }
 
   return (
-    <section id="cart" className="section cart-section" data-reveal>
+    <section id="cart" className="section cart-section">
       <div className="section-heading centered">
         <p className="eyebrow">Vaša korpa</p>
         <h2>Pregled porudžbine</h2>
         <p>Izaberite proizvode i pošaljite nam detalje za dostavu.</p>
       </div>
       {status === "success" && (
-        <div className="order-success">
+        <div className="order-success" ref={successMessageRef}>
           <span>✓</span>
           <h3>Porudžbina je poslata!</h3>
           <p>

@@ -39,6 +39,10 @@ export async function POST(request) {
 
     const formatKilograms = (grams) => `${String(grams / 1000).replace(".", ",")} kg`;
     const formatPrice = (price) => `${Number(price).toLocaleString("sr-RS")} RSD`;
+    const formatDeliveryDate = (date) => {
+      const [year, month, day] = date.split("-");
+      return `${day}.${month}.${year}.`;
+    };
     const orderLines = items
       .map(
         (item) =>
@@ -55,7 +59,7 @@ export async function POST(request) {
       `Telefon: ${customer.phone}`,
       `E-mail: ${customer.email}`,
       `Adresa: ${customer.address}`,
-      `Željeni datum isporuke: ${customer.deliveryDate}`,
+      `Željeni datum isporuke: ${formatDeliveryDate(customer.deliveryDate)}`,
       `Napomena: ${customer.note || "nema"}`,
     ].join("\n");
     const sendEmail = (message) =>
