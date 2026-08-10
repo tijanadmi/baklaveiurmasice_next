@@ -14,9 +14,10 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/img/og-biu.png",
+        url: "/assets/img/og-biu.jpg",
         width: 1200,
         height: 630,
+        type: "image/jpeg",
         alt: "Baklave i urmašice na poslužavniku",
       },
     ],
@@ -25,7 +26,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Baklave i urmašice",
     description: "Domaće baklave i urmašice, pripremljene po porodičnom receptu.",
-    images: ["/assets/img/og-biu.png"],
+    images: ["/assets/img/og-biu.jpg"],
   },
   icons: {
     icon: "/assets/img/favicon.png",
