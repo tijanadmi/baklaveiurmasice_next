@@ -275,7 +275,7 @@ export const products = {
       description:
         "20 komada za porodičan ili poslovni trenutak kada želite da sve bude u pravu meri.",
       customQuantity: true,
-      defaultQuantity: 10,
+      defaultQuantity: 1,
       optionGroups: [
         { id: "varijanta", label: "Varijanta", choices: pastryOptions },
         {
