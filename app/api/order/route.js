@@ -2,7 +2,7 @@ const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request) {
   try {
-    const { customer, items, totalGrams, totalPrice } = await request.json();
+    const { customer, items, totalPrice } = await request.json();
 
     if (
       !customer?.name ||
@@ -37,7 +37,6 @@ export async function POST(request) {
       );
     }
 
-    const formatKilograms = (grams) => `${String(grams / 1000).replace(".", ",")} kg`;
     const formatPrice = (price) => `${Number(price).toLocaleString("sr-RS")} RSD`;
     const formatDeliveryDate = (date) => {
       const [year, month, day] = date.split("-");
@@ -46,14 +45,12 @@ export async function POST(request) {
     const orderLines = items
       .map(
         (item) =>
-          `- ${item.name}: ${formatKilograms(item.grams)} (${formatPrice(item.totalPrice)})`
+          `- ${item.quantity} × ${item.name} · ${item.amountLabel}${item.occasionLabel ? ` · Povod: ${item.occasionLabel}` : ""} (${formatPrice(item.totalPrice)})`
       )
       .join("\n");
-    const orderSummary = [
-      `KORPA`,
-      orderLines,
-      `Ukupno: ${formatKilograms(totalGrams)} — ${formatPrice(totalPrice)}`,
-    ].join("\n");
+    const orderSummary = [`KORPA`, orderLines, `Ukupno: ${formatPrice(totalPrice)}`].join(
+      "\n"
+    );
     const customerDetails = [
       `Ime: ${customer.name}`,
       `Telefon: ${customer.phone}`,

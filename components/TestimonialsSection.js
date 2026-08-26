@@ -17,8 +17,8 @@ export default function TestimonialsSection() {
   return (
     <section id="testimonials" className="section testimonials" data-reveal>
       <div className="section-heading centered">
-        <p className="eyebrow">Mišljenja kupaca</p>
-        <h2>Šta kažu o našim slatkišima</h2>
+        <p className="eyebrow">HVALA NA POVERENJU</p>
+        <h2>Najlepše preporuke dolaze od onih koji nam se vraćaju</h2>
       </div>
       <div
         className="testimonial-carousel"

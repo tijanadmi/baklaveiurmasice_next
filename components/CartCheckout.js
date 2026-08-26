@@ -2,13 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useCart } from "../context/CartContext";
-import { formatKilograms, formatPrice } from "../lib/formatters";
+import { formatPrice } from "../lib/formatters";
 
 export default function CartCheckout() {
-  const { items, totalGrams, totalPrice, removeItem, clearCart } = useCart();
+  const { items, itemCount, totalPrice, removeItem, clearCart } = useCart();
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState("");
-  const [confirmationSent, setConfirmationSent] = useState(true);
   const successMessageRef = useRef(null);
   const requiredFieldProps = {
     required: true,
@@ -42,7 +41,7 @@ export default function CartCheckout() {
       const response = await fetch("/api/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ customer, items, totalGrams, totalPrice }),
+        body: JSON.stringify({ customer, items, totalPrice }),
       });
       const result = await response.json();
       if (!response.ok)
@@ -50,7 +49,6 @@ export default function CartCheckout() {
 
       clearCart();
       form.reset();
-      setConfirmationSent(result.confirmationSent);
       setStatus("success");
     } catch (requestError) {
       setError(requestError.message);
@@ -61,18 +59,18 @@ export default function CartCheckout() {
   return (
     <section id="cart" className="section cart-section">
       <div className="section-heading centered">
-        <p className="eyebrow">Vaša korpa</p>
+        <p className="eyebrow">A sada poručite</p>
         <h2>Pregled porudžbine</h2>
         <p>Izaberite proizvode i pošaljite nam detalje za dostavu.</p>
       </div>
       {status === "success" && (
         <div className="order-success" ref={successMessageRef}>
           <span>✓</span>
-          <h3>Porudžbina je poslata!</h3>
+          <h3>
+            Porudžbina je stigla do nas. <span aria-hidden="true">❤️</span>
+          </h3>
           <p>
-            {confirmationSent
-              ? "Potvrda sa sadržajem porudžbine poslata je na vašu e-mail adresu."
-              : "Porudžbina je uspešno primljena. Uskoro ćemo vas kontaktirati radi potvrde."}
+            Sada je red na nas da zasukamo rukave i napravimo vaše baklave i urmašice.
           </p>
           <a href="#menu" className="button" onClick={() => setStatus("idle")}>
             Započni novu porudžbinu
@@ -99,7 +97,11 @@ export default function CartCheckout() {
                   <div className="cart-line" key={item.id}>
                     <div>
                       <h3>{item.name}</h3>
-                      <span>{formatKilograms(item.grams)}</span>
+                      <span>
+                        {item.amountLabel} · {item.quantity}{" "}
+                        {item.quantity === 1 ? "pakovanje" : "pakovanja"}
+                        {item.occasionLabel && <small>Povod: {item.occasionLabel}</small>}
+                      </span>
                     </div>
                     <strong>{formatPrice(item.totalPrice)}</strong>
                     <button
@@ -113,7 +115,7 @@ export default function CartCheckout() {
                 ))}
               </div>
               <div className="cart-total">
-                <span>Ukupno ({formatKilograms(totalGrams)})</span>
+                <span>Ukupno proizvoda ({itemCount})</span>
                 <strong>{formatPrice(totalPrice)}</strong>
                 <button type="button" onClick={clearCart}>
                   Isprazni korpu
@@ -146,7 +148,11 @@ export default function CartCheckout() {
           </label>
           <label>
             Napomena <small>(opciono)</small>
-            <textarea name="note" rows="3" placeholder="Na primer: pozvati pre dostave" />
+            <textarea
+              name="note"
+              rows="3"
+              placeholder="Na primer: želim pakovanje u šarene papirne korpice"
+            />
           </label>
           <button
             className="button"

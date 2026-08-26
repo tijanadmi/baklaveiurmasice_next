@@ -1,0 +1,89 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#EEF2F0"/>
+
+  <g opacity="0.42">
+    <path d="M0 220H1600" stroke="#D9DFDF" stroke-width="2"/>
+    <path d="M0 440H1600" stroke="#D9DFDF" stroke-width="2"/>
+    <path d="M0 660H1600" stroke="#D9DFDF" stroke-width="2"/>
+    <path d="M0 880H1600" stroke="#D9DFDF" stroke-width="2"/>
+    <path d="M210 0V900" stroke="#D9DFDF" stroke-width="2"/>
+    <path d="M440 0V900" stroke="#D9DFDF" stroke-width="2"/>
+    <path d="M670 0V900" stroke="#D9DFDF" stroke-width="2"/>
+    <path d="M900 0V900" stroke="#D9DFDF" stroke-width="2"/>
+    <path d="M1130 0V900" stroke="#D9DFDF" stroke-width="2"/>
+    <path d="M1360 0V900" stroke="#D9DFDF" stroke-width="2"/>
+  </g>
+
+  <path d="M1240 120C1170 180 1110 250 1080 320C1060 370 1085 470 1018 518C930 580 820 555 730 615C640 673 617 755 560 846H1440V250C1388 202 1320 142 1240 120Z" fill="#E9F1EC"/>
+
+  <path d="M0 725C170 690 270 690 350 670C447 643 490 590 560 560C648 525 706 550 790 515C868 485 974 440 1098 470C1224 501 1340 548 1600 510V900H0V725Z" fill="#DDEAE5"/>
+
+  <path d="M1400 0C1282 60 1182 103 1080 152C960 210 842 220 760 270C664 326 600 394 536 458C465 529 392 617 310 768L725 900L1600 900V0H1400Z" fill="#F3F7F5"/>
+
+  <path d="M0 690C120 690 200 665 298 640C402 612 442 545 528 529C612 514 665 546 764 520C872 493 955 420 1060 431C1170 443 1303 530 1600 498V900H0V690Z" fill="#DADBDD" opacity="0.28"/>
+
+  <path d="M1190 820C1280 754 1367 693 1600 655V900H1190V820Z" fill="#CEE6F0" opacity="0.8"/>
+
+  <g opacity="0.9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M53 201L252 190L477 210L665 172L844 190L1021 208L1201 168L1382 185L1602 165" stroke="#3BBAA6" stroke-width="18"/>
+    <path d="M76 418L310 425L573 466L782 451L1122 506L1600 476" stroke="#32C7A4" stroke-width="18"/>
+    <path d="M0 532L173 548L358 598L660 620L840 610L1160 668L1600 622" stroke="#3BB8A5" stroke-width="18"/>
+    <path d="M124 787L413 754L648 688L910 737L1174 703L1600 740" stroke="#31C3A2" stroke-width="18"/>
+
+    <path d="M110 96L153 203L180 315L117 651L90 900" stroke="#D8DEE0" stroke-width="10"/>
+    <path d="M258 0L230 260L260 553L340 735L357 900" stroke="#D8DEE0" stroke-width="10"/>
+    <path d="M538 0L570 181L620 360L575 900" stroke="#D8DEE0" stroke-width="10"/>
+    <path d="M788 0L770 168L790 360L841 900" stroke="#D8DEE0" stroke-width="10"/>
+    <path d="M1062 0L1096 140L1093 460L1160 900" stroke="#D8DEE0" stroke-width="10"/>
+    <path d="M1308 0L1267 240L1304 576L1450 900" stroke="#D8DEE0" stroke-width="10"/>
+  </g>
+
+  <g opacity="0.95" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M95 147C260 188 402 196 512 210C700 232 824 214 942 226C1062 238 1186 172 1338 202C1432 222 1504 249 1600 264" stroke="#FF3A3A" stroke-width="8"/>
+    <path d="M90 522C145 526 196 552 236 575C307 620 354 618 431 628C530 641 611 622 701 656C813 697 878 688 957 707C1066 732 1178 760 1274 790C1367 818 1465 830 1600 826" stroke="#FF3A3A" stroke-width="8"/>
+    <path d="M80 196C156 186 210 184 251 198C332 224 332 295 386 341C469 415 604 446 750 445C914 444 1070 356 1170 350C1304 344 1416 390 1600 390" stroke="#FF3A3A" stroke-width="8"/>
+  </g>
+
+  <g font-family="Arial, sans-serif" fill="#4E6A70">
+    <text x="116" y="156" font-size="18" font-weight="700">Kula Gardoš</text>
+    <text x="672" y="178" font-size="18" font-weight="700">Kotež</text>
+    <text x="984" y="250" font-size="18" font-weight="700">Banjica</text>
+    <text x="410" y="376" font-size="18" font-weight="700">Sava centar</text>
+    <text x="620" y="560" font-size="22" font-weight="700">Belgrade</text>
+    <text x="612" y="592" font-size="22" font-weight="700">Београд</text>
+    <text x="1108" y="728" font-size="18" font-weight="700">Groblje</text>
+    <text x="1187" y="760" font-size="18" font-weight="700">Mirijevo</text>
+    <text x="325" y="736" font-size="18" font-weight="700">Vozdovac</text>
+    <text x="118" y="804" font-size="18" font-weight="700">Novi Beograd</text>
+  </g>
+
+  <g font-family="Arial, sans-serif" font-size="12" fill="#5B6E74" opacity="0.9">
+    <text x="76" y="600">E-75</text>
+    <text x="342" y="448">E-70</text>
+    <text x="838" y="514">E-75</text>
+    <text x="1124" y="612">E-70</text>
+    <text x="1176" y="442">E-75</text>
+  </g>
+
+  <g font-family="Arial, sans-serif" font-weight="700" fill="#1C5F70">
+    <text x="1030" y="194" font-size="15">MIRIJEVO</text>
+    <text x="1035" y="217" font-size="15">МИРИЈЕВО</text>
+    <text x="998" y="706" font-size="15">VOŽDOVAC</text>
+    <text x="1165" y="566" font-size="15">Dunav</text>
+  </g>
+
+  <g>
+    <circle cx="714" cy="468" r="17" fill="#F4F5F6" stroke="#8A95A3" stroke-width="3"/>
+    <circle cx="848" cy="540" r="17" fill="#F4F5F6" stroke="#8A95A3" stroke-width="3"/>
+    <circle cx="1029" cy="365" r="17" fill="#F4F5F6" stroke="#8A95A3" stroke-width="3"/>
+  </g>
+
+  <g>
+    <rect x="1118" y="87" width="180" height="58" rx="26" fill="rgba(255,255,255,0.76)" stroke="#E9BCC0"/>
+    <text x="1154" y="122" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#C12833">CRVENA ZONA</text>
+  </g>
+
+  <g opacity="0.8">
+    <path d="M1100 365C1118 324 1180 301 1237 314C1280 323 1299 343 1319 377" stroke="#1E3D5D" stroke-width="4" stroke-dasharray="8 10"/>
+  </g>
+</svg>

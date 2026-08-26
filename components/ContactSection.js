@@ -43,7 +43,7 @@ export default function ContactSection() {
   return (
     <section id="contact" className="section contact" data-reveal>
       <div className="section-heading centered">
-        <p className="eyebrow">Kontakt</p>
+        <p className="eyebrow">Kontaktirajte nas</p>
         <h2>Imate pitanje? Pišite nam.</h2>
       </div>
       <div className="contact-grid">
@@ -107,7 +107,13 @@ export default function ContactSection() {
             {status === "sending" ? "Šaljemo..." : "Pošalji poruku"}
           </button>
           {status === "success" && (
-            <p className="form-success">Tvoja poruka je poslata. Hvala!</p>
+            <p className="form-success">
+              <strong>
+                Vaša poruka je upravo stigla na pravo mesto.{" "}
+                <span aria-hidden="true">❤️</span>
+              </strong>
+              <span>Javljamo vam se čim izvučemo prste iz testa.</span>
+            </p>
           )}
           {error && <p className="form-error">{error}</p>}
         </form>

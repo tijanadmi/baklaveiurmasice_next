@@ -4,12 +4,12 @@ import { useState } from "react";
 import { useCart } from "../context/CartContext";
 
 const navigationItems = [
-  ["#hero", "Početna"],
-  ["#about", "O nama"],
-  ["#menu", "Meni"],
-  ["#cart", "Korpa"],
-  ["#order", "Poručivanje"],
-  ["#contact", "Kontakt"],
+  ["#hero", "Dobro došli"],
+  ["#about", "Zašto baklave i urmašice?"],
+  ["#menu", "Izvolite, birajte"],
+  ["#cart", "A sada, poručite"],
+  ["#about-story", "Malo o nama"],
+  ["#contact", "Kontaktirajte nas"],
 ];
 
 export default function Header() {

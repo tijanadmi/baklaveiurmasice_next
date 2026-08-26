@@ -7,28 +7,28 @@ const CartContext = createContext(null);
 export function CartProvider({ children }) {
   const [items, setItems] = useState([]);
 
-  function addItem(product, grams) {
-    const packagePrice = product.prices[grams];
+  function addItem(product) {
     setItems((currentItems) => {
+      const itemQuantity = product.quantity ?? 1;
       const existingItem = currentItems.find((item) => item.id === product.id);
       if (existingItem) {
         return currentItems.map((item) =>
           item.id === product.id
             ? {
                 ...item,
-                grams: item.grams + grams,
-                totalPrice: item.totalPrice + packagePrice,
+                quantity: item.quantity + itemQuantity,
+                totalPrice: item.totalPrice + product.price * itemQuantity,
               }
             : item
         );
       }
+
       return [
         ...currentItems,
         {
-          id: product.id,
-          name: product.name,
-          grams,
-          totalPrice: packagePrice,
+          ...product,
+          quantity: itemQuantity,
+          totalPrice: product.price * itemQuantity,
         },
       ];
     });
@@ -48,8 +48,7 @@ export function CartProvider({ children }) {
       addItem,
       removeItem,
       clearCart,
-      itemCount: items.length,
-      totalGrams: items.reduce((total, item) => total + item.grams, 0),
+      itemCount: items.reduce((total, item) => total + item.quantity, 0),
       totalPrice: items.reduce((total, item) => total + item.totalPrice, 0),
     }),
     [items]
