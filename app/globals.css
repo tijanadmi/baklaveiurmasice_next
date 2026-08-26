@@ -1427,7 +1427,7 @@ nav a:hover::after {
   transform: scale(1.035);
 }
 .order-copy {
-  background: linear-gradient(135deg, rgba(139, 38, 53, 0.97), rgba(86, 19, 30, 0.98));
+  background: linear-gradient(145deg, #795643 0%, var(--brown-dark) 100%);
   position: relative;
 }
 .order-copy::after {
@@ -1817,8 +1817,8 @@ nav a:hover::after {
 .contact-details {
   background: linear-gradient(
     145deg,
-    var(--section-warm-1) 0%,
-    var(--section-warm-2) 100%
+    #795643 0%,
+    var(--brown-dark) 100%
   );
   color: #fffaf3;
   display: flex;

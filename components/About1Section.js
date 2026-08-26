@@ -29,9 +29,9 @@ export default function About1Section() {
             koje volite nikada nije sitnica. Godinama smo gradile karijere u profesijama
             različitim od ove i tu naučile šta znači
             <strong> odgovornost, kvalitet bez kompromisa i poštovanje dogovora.</strong>
-            Kada smo odlučile da stvorimo "našu priču", ideja se sama nametnula. Sve je,
-            zapravo, bilo tu — u našoj porodici, u receptima koje smo znale i kolačima
-            koje smo decenijama pripremale za ljude koje volimo.
+            Kada smo odlučile da stvorimo &quot;našu priču&quot;, ideja se sama nametnula.
+            Sve je, zapravo, bilo tu — u našoj porodici, u receptima koje smo znale i
+            kolačima koje smo decenijama pripremale za ljude koje volimo.
           </p>
 
           <p>
