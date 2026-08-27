@@ -212,13 +212,37 @@ h3 {
   }
 }
 
+.about {
+  background:
+    linear-gradient(rgba(246, 236, 223, 0.91), rgba(246, 236, 223, 0.91)),
+    url("/assets/img/stats-bg.jpg") center / cover;
+  max-width: none;
+  position: relative;
+}
+.about::before {
+  background: rgba(87, 28, 26, 0.025);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+.about > * {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1100px;
+  position: relative;
+}
+.about > .section-heading {
+  max-width: 690px;
+}
+
 .order {
   background: transparent;
   box-shadow: none;
   padding: 94px 5vw;
 }
 .order-content {
-  border-radius: 7px;
+  width: 100%;
   margin: 0 auto;
 }
 .order-copy::after {
@@ -520,6 +544,9 @@ h3 {
   background: linear-gradient(180deg, #f6f0e8 0%, #f0e4d3 100%);
   max-width: none;
 }
+.section.about {
+  max-width: none;
+}
 .menu-section > * {
   margin-left: auto;
   margin-right: auto;
@@ -614,16 +641,12 @@ h3 {
     var(--section-warm-2) 100%
   );
   color: #fff;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   max-width: none;
   padding: 0;
 }
-.order-image {
-  background: center / cover url("/assets/img/reservation.jpg");
-  min-height: 510px;
-}
 .order-copy {
+  margin: 0 auto;
+  max-width: 900px;
   padding: 75px max(5vw, 32px);
 }
 .order-copy .eyebrow,
@@ -699,6 +722,19 @@ h3 {
 }
 .contact .button {
   justify-self: start;
+}
+.contact-intro {
+  color: var(--muted);
+  margin: -7px 0 0;
+}
+.contact-intro a {
+  color: var(--orange-deep);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.contact-intro a:hover {
+  color: var(--brown-dark);
 }
 .form-success {
   color: #277050;
@@ -1275,6 +1311,10 @@ nav a:hover::after {
   max-width: 850px;
   padding-top: 20px;
 }
+.menu-details-intro {
+  margin-top: 20px;
+  text-align: left;
+}
 .menu-section kbd {
   background: #fffdf9;
   border: 1px solid #dec7a6;
@@ -1295,6 +1335,40 @@ nav a:hover::after {
 .menu-details p {
   line-height: 1.7;
 }
+.menu-order-details .order-content {
+  margin-top: 0;
+}
+.menu-order-details {
+  max-width: 1120px;
+}
+.menu-order-guide {
+  color: var(--ink);
+  padding: 26px 0 0;
+}
+.menu-order-guide .order-steps {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0 0 26px;
+}
+.menu-order-guide .order-steps li {
+  gap: 12px;
+}
+.menu-order-guide .order-steps li > span {
+  background: var(--gold);
+  color: var(--brown-dark);
+}
+.menu-order-guide .order-steps strong {
+  color: var(--brown-dark);
+}
+.menu-order-guide .order-steps p {
+  color: var(--muted);
+}
+.menu-order-guide > p {
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+.menu-order-guide .button {
+  margin-top: 0;
+}
 .product-order select {
   background: #fff;
   border: 1px solid #dec7a6;
@@ -1307,23 +1381,23 @@ nav a:hover::after {
   align-items: center;
   background: var(--wine);
   border: 0;
-  border-radius: 50%;
+  border-radius: 999px;
   box-shadow: 0 10px 18px rgba(119, 44, 57, 0.22);
   color: #fff;
   cursor: pointer;
   display: inline-flex;
   font: inherit;
-  font-size: 1.85rem;
+  font-size: 0.9rem;
   font-weight: 700;
   height: 50px;
   justify-content: center;
   line-height: 1;
-  padding: 0;
+  padding: 0 18px;
   transition:
     background 0.2s,
     transform 0.2s,
     box-shadow 0.2s;
-  width: 50px;
+  width: auto;
 }
 .add-to-cart:hover {
   background: var(--wine-dark);
@@ -1332,7 +1406,7 @@ nav a:hover::after {
 }
 .add-to-cart.is-added {
   background: #2f7957;
-  font-size: 1.35rem;
+  font-size: 0.9rem;
 }
 .cart-badge {
   background: rgba(255, 255, 255, 0.2);
@@ -1815,11 +1889,7 @@ nav a:hover::after {
   margin-top: 40px;
 }
 .contact-details {
-  background: linear-gradient(
-    145deg,
-    #795643 0%,
-    var(--brown-dark) 100%
-  );
+  background: linear-gradient(145deg, #795643 0%, var(--brown-dark) 100%);
   color: #fffaf3;
   display: flex;
   flex-direction: column;

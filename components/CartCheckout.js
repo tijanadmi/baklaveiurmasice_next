@@ -59,7 +59,7 @@ export default function CartCheckout() {
   return (
     <section id="cart" className="section cart-section">
       <div className="section-heading centered">
-        <p className="eyebrow">A sada poručite</p>
+        <p className="eyebrow">Korpa</p>
         <h2>Pregled porudžbine</h2>
         <p>Izaberite proizvode i pošaljite nam detalje za dostavu.</p>
       </div>

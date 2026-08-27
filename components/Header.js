@@ -7,7 +7,7 @@ const navigationItems = [
   ["#hero", "Dobro došli"],
   ["#about", "Zašto baklave i urmašice?"],
   ["#menu", "Izvolite, birajte"],
-  ["#cart", "A sada, poručite"],
+  ["#cart", "Korpa"],
   ["#about-story", "Malo o nama"],
   ["#contact", "Kontaktirajte nas"],
 ];

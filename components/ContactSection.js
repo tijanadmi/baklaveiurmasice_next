@@ -45,10 +45,13 @@ export default function ContactSection() {
       <div className="section-heading centered">
         <p className="eyebrow">Kontaktirajte nas</p>
         <h2>Imate pitanje? Pišite nam.</h2>
+        <p className="contact-intro">
+          Odgovor stiže, a vaši slatki zalogaji su <a href="#menu">ovde</a>.
+        </p>
       </div>
       <div className="contact-grid">
         <aside className="contact-details">
-          <p>Za porudžbine i pitanja, najbrže odgovaramo putem Instagrama.</p>
+          <p>Tu smo za sva vaša pitanja i dogovor oko porudžbine.</p>
           <a
             className="contact-channel"
             href="https://www.instagram.com/"

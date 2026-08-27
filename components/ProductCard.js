@@ -111,7 +111,7 @@ export default function ProductCard({ product, occasion }) {
             aria-label={`Dodaj proizvod ${selectedVariant.name} u korpu`}
             title="Dodaj u korpu"
           >
-            {added ? "✓" : "+"}
+            {added ? "Dodato ✓" : "Dodaj u korpu"}
           </button>
         </div>
       )}
