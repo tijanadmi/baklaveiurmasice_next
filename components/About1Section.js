@@ -19,7 +19,7 @@ export default function About1Section() {
 
       <div className="about-story-grid">
         <div className="about-story-visual">
-          <img src="/assets/img/about.jpg" alt="Naša priča - baklave i urmašice" />
+          <img src="/assets/img/about-story.png" alt="Naša priča - baklave i urmašice" />
         </div>
 
         <div className="about-story-copy">

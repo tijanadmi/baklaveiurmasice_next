@@ -1557,6 +1557,14 @@ nav a:hover::after {
     rgba(255, 251, 246, 0.86),
     rgba(250, 241, 231, 0.96)
   );
+  max-width: none;
+  position: relative;
+}
+.delivery-section > * {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1120px;
+  position: relative;
 }
 .delivery-content {
   align-items: center;
@@ -1879,7 +1887,18 @@ nav a:hover::after {
 }
 
 .contact {
+  background:
+    linear-gradient(rgba(246, 236, 223, 0.91), rgba(246, 236, 223, 0.91)),
+    url("/assets/img/stats-bg.jpg") center / cover;
+  max-width: none;
+  position: relative;
+}
+.contact > *,
+.cart-section > * {
+  margin-left: auto;
+  margin-right: auto;
   max-width: 1080px;
+  position: relative;
 }
 .contact-grid {
   align-items: stretch;
@@ -1964,7 +1983,11 @@ nav a:hover::after {
 }
 
 .cart-section {
-  max-width: 1080px;
+  background:
+    linear-gradient(rgba(246, 236, 223, 0.91), rgba(246, 236, 223, 0.91)),
+    url("/assets/img/stats-bg.jpg") center / cover;
+  max-width: none;
+  position: relative;
 }
 .cart-layout {
   display: grid;

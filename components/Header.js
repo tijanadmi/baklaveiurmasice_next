@@ -5,9 +5,9 @@ import { useCart } from "../context/CartContext";
 
 const navigationItems = [
   ["#hero", "Dobro došli"],
-  ["#about", "Zašto baklave i urmašice?"],
   ["#menu", "Izvolite, birajte"],
   ["#cart", "Korpa"],
+  ["#about", "Zašto baklave i urmašice?"],
   ["#about-story", "Malo o nama"],
   ["#contact", "Kontaktirajte nas"],
 ];
