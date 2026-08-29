@@ -42,24 +42,21 @@ export default function MenuSection() {
         ))}
       </div>
 
-      <div className="menu-category-intro">
-        <h3>{category.title}</h3>
-        <p>{category.description}</p>
+      {category.intro?.length > 0 && (
+        <div className="menu-category-intro">
+          {category.intro.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      )}
 
-        {category.details?.length > 0 && (
-          <ul className="menu-category-points">
-            {category.details.map((detail) => (
-              <li key={detail}>{detail}</li>
-            ))}
-          </ul>
-        )}
-      </div>
-
-      <div className="products">
-        {products[activeCategory].map((product) => (
-          <ProductCard product={product} occasion={occasion} key={product.id} />
-        ))}
-      </div>
+      {products[activeCategory].length > 0 && (
+        <div className="products">
+          {products[activeCategory].map((product) => (
+            <ProductCard product={product} occasion={occasion} key={product.id} />
+          ))}
+        </div>
+      )}
 
       <details className="menu-details menu-order-details">
         <summary>A sada poručite</summary>

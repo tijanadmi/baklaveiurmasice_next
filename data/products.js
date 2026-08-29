@@ -27,7 +27,11 @@ export const menuCategories = [
   },
   {
     id: "klijenti",
-    label: "Želim klijentima da zasladim dan",
+    label: "Želim poslovnim partnerima da zasladim dan",
+    intro: [
+      "Cene su okvirne.",
+      "Odaberite vrstu, ukus i količinu, a mi ćemo vam se javiti u vezi sa brendiranjem i krajnjom cenom.",
+    ],
     title: "Nezaboravan i praktičan način da kažete hvala",
     description:
       "Kutijice sadrže 4, 9 ili 16 komada baklave, a sadržaj možete birati prema želji: posne, mrsne, orasi, pistaći.",
@@ -41,6 +45,10 @@ export const menuCategories = [
   {
     id: "pokloni",
     label: "Trebaju mi poklon – zahvalnice za goste",
+    intro: [
+      "Cene su okvirne.",
+      "Ovde odaberite, a mi vam se javljamo za dekoraciju i konačnu cenu.",
+    ],
     title: "Kada gosti ulepšaju i uveličaju vaš važan događaj",
     description:
       "Jedna baklavica, jedna urmašica ili u paru — izbor je vaš. Slatki zalogaji su položeni na tvrdi kartončić, umotani u celofan i sa mašnom.",
@@ -54,6 +62,10 @@ export const menuCategories = [
   {
     id: "poseban-poklon",
     label: "Treba mi poseban poklon za posebnu osobu",
+    intro: [
+      "Svaki poseban poklon osmišljavamo sa pažnjom, prema osobi i prilici kojoj je namenjen.",
+      "Pišite nam ili nas pozovite da zajedno dogovorimo ukuse, pakovanje i detalje koji će vaš poklon učiniti zaista jedinstvenim.",
+    ],
     title:
       "Neka vas slavljenica ili slavljenik upamte po poklonu koji će ih oboriti s nogu",
     description:
@@ -66,10 +78,15 @@ export const menuCategories = [
   },
 ];
 
-const standardPackages = [
-  { value: "500", label: "500 g" },
-  { value: "1000", label: "1 kg" },
-];
+export { products } from "./menu-products";
+
+/*
+ * Product variants live in menu-products.js. Keeping the category copy in this
+ * file makes the editorial content easy to find, while the larger price matrix
+ * remains independently maintainable.
+ */
+
+/* LEGACY PRODUCT DATA
 
 const pastryOptions = [
   { value: "mrsna", label: "Mrsna" },
@@ -79,243 +96,317 @@ const pastryOptions = [
 export const products = {
   slava: [
     {
-      id: "slava-orasi",
-      name: "Baklava sa orasima",
+      id: "slava-posni-program",
+      name: "Posni program",
       image: "/assets/img/menu/menu-item-1.png",
-      description: "Kore, mleveni i seckani orasi, šećer i agda sa limunom.",
+      description: "Slavsko malo pakovanje",
       optionGroups: [
-        { id: "varijanta", label: "Varijanta", choices: pastryOptions },
-        { id: "pakovanje", label: "Pakovanje", choices: standardPackages },
+        {
+          id: "ukus",
+          label: "Vrsta",
+          choices: [
+            { value: "orasi", label: "Orasi" },
+            { value: "lesnici", label: "Lešnici" },
+            { value: "pistaci", label: "Pistaći" },
+          ],
+        },
+        {
+          id: "kolicina",
+          label: "Količina",
+          choices: [
+            { value: "half", label: "1/2 kg" },
+            { value: "full", label: "1 kg" },
+          ],
+        },
       ],
       variants: [
         {
-          id: "mrsna-500",
-          options: { varijanta: "mrsna", pakovanje: "500" },
-          name: "Mrsna baklava sa orasima",
-          amountLabel: "500 g",
+          id: "orasi-half",
+          options: { ukus: "orasi", kolicina: "half" },
+          name: "Posni program",
+          amountLabel: "1/2 kg",
+          price: 1800,
+        },
+        {
+          id: "lesnici-half",
+          options: { ukus: "lesnici", kolicina: "half" },
+          name: "Posni program",
+          amountLabel: "1/2 kg",
           price: 2000,
         },
         {
-          id: "mrsna-1000",
-          options: { varijanta: "mrsna", pakovanje: "1000" },
-          name: "Mrsna baklava sa orasima",
+          id: "pistaci-half",
+          options: { ukus: "pistaci", kolicina: "half" },
+          name: "Posni program",
+          amountLabel: "1/2 kg",
+          price: 2300,
+        },
+        {
+          id: "orasi-full",
+          options: { ukus: "orasi", kolicina: "full" },
+          name: "Posni program",
+          amountLabel: "1 kg",
+          price: 3200,
+        },
+        {
+          id: "lesnici-full",
+          options: { ukus: "lesnici", kolicina: "full" },
+          name: "Posni program",
           amountLabel: "1 kg",
           price: 3500,
         },
         {
-          id: "posna-500",
-          options: { varijanta: "posna", pakovanje: "500" },
-          name: "Posna baklava sa orasima",
-          amountLabel: "500 g",
-          price: 1800,
-        },
-        {
-          id: "posna-1000",
-          options: { varijanta: "posna", pakovanje: "1000" },
-          name: "Posna baklava sa orasima",
-          amountLabel: "1 kg",
-          price: 3200,
-        },
-      ],
-    },
-    {
-      id: "slava-pistaci",
-      name: "Baklava sa pistaćima",
-      image: "/assets/img/menu/menu-item-3.png",
-      description: "Hrskave kore, bogat fil od pistaća i osvežavajuća agda sa limunom.",
-      optionGroups: [
-        { id: "varijanta", label: "Varijanta", choices: pastryOptions },
-        { id: "pakovanje", label: "Pakovanje", choices: standardPackages },
-      ],
-      variants: [
-        {
-          id: "mrsna-500",
-          options: { varijanta: "mrsna", pakovanje: "500" },
-          name: "Mrsna baklava sa pistaćima",
-          amountLabel: "500 g",
-          price: 2400,
-        },
-        {
-          id: "mrsna-1000",
-          options: { varijanta: "mrsna", pakovanje: "1000" },
-          name: "Mrsna baklava sa pistaćima",
-          amountLabel: "1 kg",
-          price: 4000,
-        },
-        {
-          id: "posna-500",
-          options: { varijanta: "posna", pakovanje: "500" },
-          name: "Posna baklava sa pistaćima",
-          amountLabel: "500 g",
-          price: 2300,
-        },
-        {
-          id: "posna-1000",
-          options: { varijanta: "posna", pakovanje: "1000" },
-          name: "Posna baklava sa pistaćima",
+          id: "pistaci-full",
+          options: { ukus: "pistaci", kolicina: "full" },
+          name: "Posni program",
           amountLabel: "1 kg",
           price: 3800,
         },
       ],
     },
     {
-      id: "slava-urmasice",
-      name: "Urmašice",
-      image: "/assets/img/menu/menu-item-5.png",
-      description: "Domaće urmašice sa puterom, prelivene laganom agdom od limuna.",
-      optionGroups: [{ id: "pakovanje", label: "Pakovanje", choices: standardPackages }],
-      variants: [
+      id: "slava-mrsni-program",
+      name: "Mrsni program",
+      image: "/assets/img/menu/menu-item-3.png",
+      description: "Slavsko malo pakovanje",
+      optionGroups: [
         {
-          id: "500",
-          options: { pakovanje: "500" },
-          name: "Mrsne urmašice",
-          amountLabel: "500 g",
-          price: 1500,
+          id: "ukus",
+          label: "Vrsta",
+          choices: [
+            { value: "orasi", label: "Orasi" },
+            { value: "lesnici", label: "Lešnici" },
+            { value: "pistaci", label: "Pistaći" },
+            { value: "urmasice", label: "Urmašice" },
+          ],
         },
         {
-          id: "1000",
-          options: { pakovanje: "1000" },
-          name: "Mrsne urmašice",
+          id: "kolicina",
+          label: "Količina",
+          choices: [
+            { value: "half", label: "1/2 kg" },
+            { value: "full", label: "1 kg" },
+          ],
+        },
+      ],
+      variants: [
+        {
+          id: "orasi-half",
+          options: { ukus: "orasi", kolicina: "half" },
+          name: "Mrsni program",
+          amountLabel: "1/2 kg",
+          price: 2000,
+        },
+        {
+          id: "lesnici-half",
+          options: { ukus: "lesnici", kolicina: "half" },
+          name: "Mrsni program",
+          amountLabel: "1/2 kg",
+          price: 2400,
+        },
+        {
+          id: "pistaci-half",
+          options: { ukus: "pistaci", kolicina: "half" },
+          name: "Mrsni program",
+          amountLabel: "1/2 kg",
+          price: 2700,
+        },
+        {
+          id: "urmasice-half",
+          options: { ukus: "urmasice", kolicina: "half" },
+          name: "Mrsni program",
+          amountLabel: "1/2 kg",
+          price: 2300,
+        },
+        {
+          id: "orasi-full",
+          options: { ukus: "orasi", kolicina: "full" },
+          name: "Mrsni program",
           amountLabel: "1 kg",
-          price: 2800,
+          price: 3500,
+        },
+        {
+          id: "lesnici-full",
+          options: { ukus: "lesnici", kolicina: "full" },
+          name: "Mrsni program",
+          amountLabel: "1 kg",
+          price: 4000,
+        },
+        {
+          id: "pistaci-full",
+          options: { ukus: "pistaci", kolicina: "full" },
+          name: "Mrsni program",
+          amountLabel: "1 kg",
+          price: 4400,
+        },
+        {
+          id: "urmasice-full",
+          options: { ukus: "urmasice", kolicina: "full" },
+          name: "Mrsni program",
+          amountLabel: "1 kg",
+          price: 3900,
         },
       ],
     },
   ],
   "svaki-dan": [
     {
-      id: "baklava-po-komadu",
-      name: "Baklava po komadu",
+      id: "dnevni-posni-tamanica",
+      name: "Posni program",
       image: "/assets/img/menu/baklavasroutker.600x434.jpg",
-      description:
-        "Izaberite svoju vrstu i komadno poručivanje za svaki dan i bez stresa.",
-      customQuantity: true,
-      defaultQuantity: 10,
+      description: "Tamanica 20 komada",
       optionGroups: [
-        { id: "varijanta", label: "Varijanta", choices: pastryOptions },
         {
           id: "ukus",
           label: "Ukus",
           choices: [
             { value: "orasi", label: "Orasi" },
-            { value: "pistaci", label: "Pistaći" },
             { value: "lesnici", label: "Lešnici" },
-          ],
-        },
-      ],
-      variants: [
-        {
-          id: "mrsna-orasi",
-          options: { varijanta: "mrsna", ukus: "orasi" },
-          name: "Mrsna baklava po komadu",
-          amountLabel: "1 komad",
-          price: 90,
-        },
-        {
-          id: "posna-orasi",
-          options: { varijanta: "posna", ukus: "orasi" },
-          name: "Posna baklava po komadu",
-          amountLabel: "1 komad",
-          price: 85,
-        },
-        {
-          id: "mrsna-pistaci",
-          options: { varijanta: "mrsna", ukus: "pistaci" },
-          name: "Mrsna baklava sa pistaćima",
-          amountLabel: "1 komad",
-          price: 100,
-        },
-        {
-          id: "posna-pistaci",
-          options: { varijanta: "posna", ukus: "pistaci" },
-          name: "Posna baklava sa pistaćima",
-          amountLabel: "1 komad",
-          price: 95,
-        },
-        // TODO: Privremene cene — potvrditi sa mušterijom.
-        {
-          id: "mrsna-lesnici",
-          options: { varijanta: "mrsna", ukus: "lesnici" },
-          name: "Mrsna baklava sa lešnicima",
-          amountLabel: "1 komad",
-          price: 105,
-        },
-        {
-          id: "posna-lesnici",
-          options: { varijanta: "posna", ukus: "lesnici" },
-          name: "Posna baklava sa lešnicima",
-          amountLabel: "1 komad",
-          price: 100,
-        },
-      ],
-    },
-    {
-      id: "urmasice-po-komadu",
-      name: "Urmašice po komadu",
-      image: "/assets/img/menu/menu-item-5.png",
-      description:
-        "Mala, savršena poslastica za kafu, poslovni sastanak ili spontano druženje.",
-      customQuantity: true,
-      defaultQuantity: 10,
-      optionGroups: [],
-      variants: [
-        {
-          id: "komad",
-          options: {},
-          name: "Urmašica",
-          amountLabel: "1 komad",
-          price: 60,
-        },
-      ],
-    },
-    {
-      id: "tamanica",
-      name: "Tamanica",
-      image: "/assets/img/menu/baklavasroutker.600x434.jpg",
-      description:
-        "20 komada za porodičan ili poslovni trenutak kada želite da sve bude u pravu meri.",
-      customQuantity: true,
-      defaultQuantity: 1,
-      optionGroups: [
-        { id: "varijanta", label: "Varijanta", choices: pastryOptions },
-        {
-          id: "ukus",
-          label: "Ukus",
-          choices: [
-            { value: "orasi", label: "Orasi" },
             { value: "pistaci", label: "Pistaći" },
           ],
         },
       ],
       variants: [
         {
-          id: "mrsna-orasi",
-          options: { varijanta: "mrsna", ukus: "orasi" },
-          name: "Tamanica · Mrsna · Orasi",
+          id: "orasi",
+          options: { ukus: "orasi" },
+          name: "Posni program",
+          amountLabel: "20 komada",
+          price: 1700,
+        },
+        {
+          id: "lesnici",
+          options: { ukus: "lesnici" },
+          name: "Posni program",
+          amountLabel: "20 komada",
+          price: 1800,
+        },
+        {
+          id: "pistaci",
+          options: { ukus: "pistaci" },
+          name: "Posni program",
+          amountLabel: "20 komada",
+          price: 2000,
+        },
+      ],
+    },
+    {
+      id: "dnevni-posni-malac",
+      name: "Posni program",
+      image: "/assets/img/menu/menu-item-5.png",
+      description: "Malac 16 komada",
+      optionGroups: [
+        {
+          id: "ukus",
+          label: "Ukus",
+          choices: [
+            { value: "orasi", label: "Orasi" },
+            { value: "lesnici", label: "Lešnici" },
+            { value: "pistaci", label: "Pistaći" },
+          ],
+        },
+      ],
+      variants: [
+        {
+          id: "orasi",
+          options: { ukus: "orasi" },
+          name: "Posni program",
+          amountLabel: "16 komada",
+          price: 1350,
+        },
+        {
+          id: "lesnici",
+          options: { ukus: "lesnici" },
+          name: "Posni program",
+          amountLabel: "16 komada",
+          price: 1450,
+        },
+        {
+          id: "pistaci",
+          options: { ukus: "pistaci" },
+          name: "Posni program",
+          amountLabel: "16 komada",
+          price: 1600,
+        },
+      ],
+    },
+    {
+      id: "dnevni-mrsni-tamanica",
+      name: "Mrsni program",
+      image: "/assets/img/menu/baklavasroutker.600x434.jpg",
+      description: "Tamanica 20 komada",
+      optionGroups: [
+        {
+          id: "ukus",
+          label: "Ukus",
+          choices: [
+            { value: "orasi", label: "Orasi" },
+            { value: "lesnici", label: "Lešnici" },
+            { value: "pistaci", label: "Pistaći" },
+          ],
+        },
+      ],
+      variants: [
+        {
+          id: "orasi",
+          options: { ukus: "orasi" },
+          name: "Mrsni program",
           amountLabel: "20 komada",
           price: 2100,
         },
         {
-          id: "posna-orasi",
-          options: { varijanta: "posna", ukus: "orasi" },
-          name: "Tamanica · Posna · Orasi",
+          id: "lesnici",
+          options: { ukus: "lesnici" },
+          name: "Mrsni program",
           amountLabel: "20 komada",
-          price: 2000,
-        },
-        // TODO: Privremene cene — potvrditi sa mušterijom.
-        {
-          id: "mrsna-pistaci",
-          options: { varijanta: "mrsna", ukus: "pistaci" },
-          name: "Tamanica · Mrsna · Pistaći",
-          amountLabel: "20 komada",
-          price: 2450,
+          price: 2400,
         },
         {
-          id: "posna-pistaci",
-          options: { varijanta: "posna", ukus: "pistaci" },
-          name: "Tamanica · Posna · Pistaći",
+          id: "pistaci",
+          options: { ukus: "pistaci" },
+          name: "Mrsni program",
           amountLabel: "20 komada",
-          price: 2350,
+          price: 2600,
+        },
+      ],
+    },
+    {
+      id: "dnevni-mrsni-malac",
+      name: "Mrsni program",
+      image: "/assets/img/menu/menu-item-5.png",
+      description: "Malac 16 komada",
+      optionGroups: [
+        {
+          id: "ukus",
+          label: "Ukus",
+          choices: [
+            { value: "orasi", label: "Orasi" },
+            { value: "lesnici", label: "Lešnici" },
+            { value: "pistaci", label: "Pistaći" },
+          ],
+        },
+      ],
+      variants: [
+        {
+          id: "orasi",
+          options: { ukus: "orasi" },
+          name: "Mrsni program",
+          amountLabel: "16 komada",
+          price: 1450,
+        },
+        {
+          id: "lesnici",
+          options: { ukus: "lesnici" },
+          name: "Mrsni program",
+          amountLabel: "16 komada",
+          price: 1700,
+        },
+        {
+          id: "pistaci",
+          options: { ukus: "pistaci" },
+          name: "Mrsni program",
+          amountLabel: "16 komada",
+          price: 1900,
         },
       ],
     },
@@ -772,3 +863,4 @@ export const products = {
     },
   ],
 };
+*/

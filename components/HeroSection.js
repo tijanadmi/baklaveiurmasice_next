@@ -16,7 +16,7 @@ export default function HeroSection() {
         </div>
       </div>
       <div className="hero-image">
-        <img src="/assets/img/hero-naslovna.png" alt="Baklava i urmašice" />
+        <img src="/assets/img/hero-naslovna1-krug.png" alt="Baklava i urmašice" />
       </div>
     </section>
   );
