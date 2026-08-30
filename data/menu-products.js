@@ -62,9 +62,6 @@ function createThankYouProduct({ kind, image }) {
       const firstIsUrmasice = first.value === "urmasice";
       const secondIsUrmasice = second.value === "urmasice";
 
-      // Cena za dve urmašice nije navedena u klijentovom cenovniku.
-      if (firstIsUrmasice && secondIsUrmasice) continue;
-
       variants.push({
         id: `${first.value}-${second.value}-hvala-vam-2`,
         options: {
@@ -75,7 +72,14 @@ function createThankYouProduct({ kind, image }) {
         name: kind === "posni" ? "Posni program" : "Mrsni program",
         amountLabel: "Hvala vam 2",
         selectionLabel: `${first.label} + ${second.label} · Hvala vam 2`,
-        price: isMrsni && (firstIsUrmasice || secondIsUrmasice) ? 220 : isMrsni ? 260 : 240,
+        price:
+          firstIsUrmasice && secondIsUrmasice
+            ? 170
+            : isMrsni && (firstIsUrmasice || secondIsUrmasice)
+              ? 220
+              : isMrsni
+                ? 260
+                : 240,
       });
     }
   }
@@ -176,7 +180,7 @@ export const products = {
     }),
     program("klijenti", "mrsni", {
       image: "/assets/img/menu/menu-item-3s.png",
-      typeChoices: [...baklavaChoices, { value: "urmasice", label: "Urmašice" }],
+      typeChoices: baklavaChoices,
       sizes: clientSizes,
       prices: {
         orasi: { 4: 420, 9: 1060, 16: 1640 },
