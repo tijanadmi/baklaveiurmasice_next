@@ -4,6 +4,7 @@ import CartCheckout from "../components/CartCheckout";
 import ContactSection from "../components/ContactSection";
 import DeliverySection from "../components/DeliverySection";
 import Footer from "../components/Footer";
+import GallerySection from "../components/GallerySection";
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import MenuSection from "../components/MenuSection";
@@ -17,12 +18,13 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
+        <AboutSection />
         <MenuSection />
         <DeliverySection />
-        <CartCheckout />
         <TestimonialsSection />
-        <AboutSection />
         <About1Section />
+        <GallerySection />
+        <CartCheckout />
         <ContactSection />
       </main>
       <Footer />

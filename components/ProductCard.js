@@ -13,9 +13,14 @@ export default function ProductCard({ product, occasion }) {
   );
   const [quantity, setQuantity] = useState(product.defaultQuantity ?? 1);
   const [added, setAdded] = useState(false);
+  const [photoIndex, setPhotoIndex] = useState(0);
   const selectedVariant = product.variants.find((variant) =>
     Object.entries(variant.options).every(([key, value]) => selection[key] === value)
   );
+  const hasImageFrame = ["slava", "svaki-dan", "pokloni", "klijenti"].includes(
+    occasion.id
+  );
+  const rotateImage = occasion.id === "slava" || selectedVariant?.imageRotation === 90;
 
   function choiceIsAvailable(groupId, choiceValue) {
     return product.variants.some(
@@ -77,47 +82,82 @@ export default function ProductCard({ product, occasion }) {
 
   return (
     <article className="product">
-      <img
-        className={product.imageLayout === "portrait" ? "product-image-portrait" : ""}
-        src={product.image}
-        alt={product.name}
-      />
+      <div className={hasImageFrame ? "product-package-frame" : undefined}>
+        <div
+          className={
+            hasImageFrame
+              ? `product-package-photo${rotateImage ? " product-package-photo-rotated" : ""}`
+              : undefined
+          }
+        >
+          <img
+            className={product.imageLayout === "portrait" ? "product-image-portrait" : ""}
+            src={product.images?.[photoIndex] ?? selectedVariant?.image ?? product.image}
+            alt={`${product.name}${selectedVariant?.amountLabel ? ` — ${selectedVariant.amountLabel}` : ""}`}
+            loading="lazy"
+            style={{
+              objectFit: selectedVariant?.imageFit,
+              objectPosition: selectedVariant?.imagePosition,
+            }}
+          />
+        </div>
+      </div>
+      {product.images?.length > 1 && (
+        <div
+          className="product-photo-picker"
+          role="group"
+          aria-label="Fotografije proizvoda"
+        >
+          {product.images.map((src, index) => (
+            <button
+              key={src}
+              type="button"
+              aria-pressed={photoIndex === index}
+              onClick={() => setPhotoIndex(index)}
+            >
+              Fotografija {index + 1}
+            </button>
+          ))}
+        </div>
+      )}
       <div className="product-content">
         <h3>{product.name}</h3>
 
         <div className="product-options">
           {product.optionGroups.map((group) =>
-            group.showWhen && selection[group.showWhen.groupId] !== group.showWhen.value ? null : (
-            <div
-              key={group.id}
-              className={`product-option-group ${group.column ? `option-column-${group.column}` : ""}`}
-              style={{ "--choice-count": group.choices.length }}
-            >
-              <span className="group-label">{group.label}</span>
-              <div className="group-choices" role="group" aria-label={group.label}>
-                {group.choices.map((choice) => {
-                  const isSelected = selection[group.id] === choice.value;
-                  const isDisabled = !choiceIsAvailable(group.id, choice.value);
+            group.showWhen &&
+            selection[group.showWhen.groupId] !== group.showWhen.value ? null : (
+              <div
+                key={group.id}
+                className={`product-option-group ${group.column ? `option-column-${group.column}` : ""}`}
+                style={{ "--choice-count": group.choices.length }}
+              >
+                <span className="group-label">{group.label}</span>
+                <div className="group-choices" role="group" aria-label={group.label}>
+                  {group.choices.map((choice) => {
+                    const isSelected = selection[group.id] === choice.value;
+                    const isDisabled = !choiceIsAvailable(group.id, choice.value);
 
-                  return (
-                    <button
-                      key={choice.value}
-                      type="button"
-                      className={`choice-pill ${isSelected ? "selected" : ""}`}
-                      disabled={isDisabled}
-                      onClick={() =>
-                        setSelection((currentSelection) => ({
-                          ...currentSelection,
-                          [group.id]: choice.value,
-                        }))
-                      }
-                    >
-                      {choice.label}
-                    </button>
-                  );
-                })}
+                    return (
+                      <button
+                        key={choice.value}
+                        type="button"
+                        className={`choice-pill ${isSelected ? "selected" : ""}`}
+                        disabled={isDisabled}
+                        aria-pressed={isSelected}
+                        onClick={() =>
+                          setSelection((currentSelection) => ({
+                            ...currentSelection,
+                            [group.id]: choice.value,
+                          }))
+                        }
+                      >
+                        {choice.label}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
             )
           )}
 

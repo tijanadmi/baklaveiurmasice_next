@@ -5,7 +5,7 @@ export default function About1Section() {
         urmašice
       </div>
 
-      <div className="about-story-header centered">
+      <div className="about-story-header section-heading-left">
         <p className="eyebrow">Naša priča</p>
         <h2>Malo o nama</h2>
         <p className="about-story-lead">
@@ -19,16 +19,29 @@ export default function About1Section() {
 
       <div className="about-story-grid">
         <div className="about-story-visual">
-          <img src="/assets/img/about-story.png" alt="Naša priča - baklave i urmašice" />
+          <img
+            src="/assets/img/about11.png"
+            alt="Priprema domaćih baklava i urmašica u našoj radionici"
+            width={1402}
+            height={1122}
+            loading="lazy"
+          />
         </div>
 
         <div className="about-story-copy">
           <p>
             Mi smo <strong>Aleksandra i Svjetlana</strong> — sestre, majke, supruge i
             preduzetnice. Pre svega, dve žene koje veruju da pažnja koju posvetite ljudima
-            koje volite nikada nije sitnica. Godinama smo gradile karijere u profesijama
-            različitim od ove i tu naučile šta znači
-            <strong> odgovornost, kvalitet bez kompromisa i poštovanje dogovora.</strong>
+            koje volite nikada nije sitnica.
+          </p>
+
+          <p>
+            Godinama smo gradile karijere u profesijama različitim od ove i tu naučile šta
+            znači
+            <strong>
+              {" "}
+              odgovornost, kvalitet bez kompromisa i poštovanje dogovora.
+            </strong>{" "}
             Kada smo odlučile da stvorimo &quot;našu priču&quot;, ideja se sama nametnula.
             Sve je, zapravo, bilo tu — u našoj porodici, u receptima koje smo znale i
             kolačima koje smo decenijama pripremale za ljude koje volimo.
@@ -46,27 +59,33 @@ export default function About1Section() {
             Malo ih je, ali ih ima — <strong>naše baklave i urmašice.</strong>
           </p>
 
-          <p>
-            Recept za naše baklave i urmašice nastao je u Bosni i Hercegovini i
-            generacijama se prenosio kroz našu porodicu. Svaka generacija dodala je poneko
-            svoje iskustvo, a ono najvažnije ostalo je isto:{" "}
-            <strong>
-              pažnja prema sastojcima, načinu pripreme i ukusu koji stvara posebne
-              prilike.
-            </strong>
-          </p>
+          <details className="about-story-details">
+            <summary>
+              <span className="about-story-read-more">Pročitaj više</span>
+              <span className="about-story-read-less">Prikaži manje</span>
+            </summary>
+            <p>
+              Recept za naše baklave i urmašice nastao je u Bosni i Hercegovini i
+              generacijama se prenosio kroz našu porodicu. Svaka generacija dodala je
+              poneko svoje iskustvo, a ono najvažnije ostalo je isto:{" "}
+              <strong>
+                pažnja prema sastojcima, načinu pripreme i ukusu koji stvara posebne
+                prilike.
+              </strong>
+            </p>
 
-          <p>
-            Tako su nastale <strong>Baklave i urmašice.</strong> Zadržale smo porodičnu
-            recepturu i način pripreme koji smo nasledile, a biramo sastojke i posvećujemo
-            pažnju svakom detalju kao da kolače spremamo za svoj dom.
-          </p>
+            <p>
+              Tako su nastale <strong>Baklave i urmašice.</strong> Zadržale smo porodičnu
+              recepturu i način pripreme koji smo nasledile, a biramo sastojke i
+              posvećujemo pažnju svakom detalju kao da kolače spremamo za svoj dom.
+            </p>
 
-          <p>
-            Danas ih pravimo za vas — za poklon koji birate s pažnjom, sto oko kog se
-            okupljaju vama dragi ljudi, proslavu koju želite da pamtite ili onu malu pauzu
-            uz kafu kada jednostavno želite da počastite sebe.
-          </p>
+            <p>
+              Danas ih pravimo za vas — za poklon koji birate s pažnjom, sto oko kog se
+              okupljaju vama dragi ljudi, proslavu koju želite da pamtite ili onu malu
+              pauzu uz kafu kada jednostavno želite da počastite sebe.
+            </p>
+          </details>
         </div>
       </div>
 

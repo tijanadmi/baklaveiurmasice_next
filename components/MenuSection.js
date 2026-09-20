@@ -14,7 +14,7 @@ export default function MenuSection() {
 
   return (
     <section id="menu" className="section menu-section" data-reveal>
-      <div className="section-heading centered">
+      <div className="section-heading section-heading-left">
         <p className="eyebrow">IZVOLITE, BIRAJTE BAKLAVE I URMAŠICE</p>
         <h2>Koja situacija je danas vaša?</h2>
         <details className="menu-details menu-details-intro">
@@ -29,15 +29,17 @@ export default function MenuSection() {
         </details>
       </div>
 
-      <div className="tabs occasion-tabs" role="tablist" aria-label="Izbor povoda">
+      <div className="tabs occasion-tabs" role="group" aria-label="Izbor povoda">
         {menuCategories.map((item) => (
           <button
             key={item.id}
             className={activeCategory === item.id ? "active" : ""}
             type="button"
+            aria-pressed={activeCategory === item.id}
+            title={item.label}
             onClick={() => setActiveCategory(item.id)}
           >
-            {item.label}
+            {item.tabLabel}
           </button>
         ))}
       </div>
@@ -46,6 +48,26 @@ export default function MenuSection() {
         <div className="menu-category-intro">
           {category.intro.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      )}
+
+      {category.gallery?.length > 0 && (
+        <div
+          className="gift-gallery"
+          role="group"
+          aria-label="Primeri poklona dragoj osobi"
+        >
+          {category.gallery.map((photo) => (
+            <figure className="gift-gallery-frame" key={photo.src}>
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                width={900}
+                height={1600}
+                loading="lazy"
+              />
+            </figure>
           ))}
         </div>
       )}

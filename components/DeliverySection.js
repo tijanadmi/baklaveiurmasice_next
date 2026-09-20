@@ -1,7 +1,7 @@
 export default function DeliverySection() {
   return (
     <section id="delivery" className="section delivery-section" data-reveal>
-      <div className="section-heading centered">
+      <div className="section-heading section-heading-left">
         <p className="eyebrow">BESPLATNA DOSTAVA</p>
         <h2>
           Dostava je uključena <span>u crvenoj zoni</span>
@@ -25,17 +25,10 @@ export default function DeliverySection() {
 
           <ul>
             <li>Za ostala pakovanja, dostava se naplaćuje po kilometraži.</li>
-            <li>Besplatno preuzimanje moguće je kod Vera na Konjarniku.</li>
-            <li>Porudžbine dostavljamo uredno i po dogovorenom terminu.</li>
+            <li>
+              Za sva pakovanja besplatno preuzimanje moguće je kod Vera na Konjarniku.
+            </li>
           </ul>
-
-          <div className="delivery-note">
-            <strong>Naša preporuka</strong>
-            <span>
-              Ukoliko želite najbrži i najjednostavniji izbor, preporučujemo pakovanje od
-              1 kg ili 1/2 kg unutar crvene zone.
-            </span>
-          </div>
         </div>
       </div>
     </section>

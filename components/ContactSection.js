@@ -42,7 +42,7 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="section contact" data-reveal>
-      <div className="section-heading centered">
+      <div className="section-heading section-heading-left">
         <p className="eyebrow">Kontaktirajte nas</p>
         <h2>Imate pitanje? Pišite nam.</h2>
         <p className="contact-intro">

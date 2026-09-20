@@ -1,6 +1,7 @@
 export const menuCategories = [
   {
     id: "slava",
+    tabLabel: "Slava i gosti",
     label: "Slavim slavu i imam goste",
     title: "Zablistajte kao domaćica ili domaćin",
     description:
@@ -14,6 +15,7 @@ export const menuCategories = [
   },
   {
     id: "svaki-dan",
+    tabLabel: "Slatki predah",
     label: "Želim da zasladim dan",
     title: "Zaslužujete vrhunski kvalitet svaki dan",
     description:
@@ -27,6 +29,7 @@ export const menuCategories = [
   },
   {
     id: "klijenti",
+    tabLabel: "Poslovni pokloni",
     label: "Želim poslovnim partnerima da zasladim dan",
     intro: [
       "Cene su okvirne.",
@@ -44,6 +47,7 @@ export const menuCategories = [
   },
   {
     id: "pokloni",
+    tabLabel: "Zahvalnice za goste",
     label: "Trebaju mi poklon – zahvalnice za goste",
     intro: [
       "Cene su okvirne.",
@@ -61,6 +65,25 @@ export const menuCategories = [
   },
   {
     id: "poseban-poklon",
+    gallery: [
+      {
+        src: "/assets/img/menu/poklon_dragoj%20osobi/IMG_2374.webp",
+        alt: "Poklon kutija sa baklavama i urmašicama, ukrašena zlatnom mašnom",
+      },
+      {
+        src: "/assets/img/menu/poklon_dragoj%20osobi/IMG_2378.webp",
+        alt: "Rođendanska poklon kutija sa poslasticama i zlatnom mašnom",
+      },
+      {
+        src: "/assets/img/menu/poklon_dragoj%20osobi/IMG_2519.webp",
+        alt: "Srebrna poklon kutija sa baklavama i plavom mašnom, pogled odozgo",
+      },
+      {
+        src: "/assets/img/menu/poklon_dragoj%20osobi/IMG_2523.webp",
+        alt: "Otvorena poklon kutija sa baklavama, plavom mašnom i ukrasima",
+      },
+    ],
+    tabLabel: "Poklon dragoj osobi",
     label: "Treba mi poseban poklon za posebnu osobu",
     intro: [
       "Svaki poseban poklon osmišljavamo sa pažnjom, prema osobi i prilici kojoj je namenjen.",

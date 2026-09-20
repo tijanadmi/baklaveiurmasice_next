@@ -4,11 +4,22 @@ const baklavaChoices = [
   { value: "pistaci", label: "Baklava-pistaći" },
 ];
 
-function createProduct({ id, name, image, typeChoices, sizes, prices }) {
+function createProduct({
+  id,
+  name,
+  image,
+  images,
+  imagesBySize,
+  imageOptionsBySize,
+  typeChoices,
+  sizes,
+  prices,
+}) {
   return {
     id,
     name,
     image,
+    images,
     optionGroups: [
       { id: "vrsta", label: "Vrsta", choices: typeChoices },
       { id: "velicina", label: "Količina / veličina", choices: sizes },
@@ -19,6 +30,8 @@ function createProduct({ id, name, image, typeChoices, sizes, prices }) {
         options: { vrsta: type, velicina: size },
         name,
         amountLabel: sizes.find((option) => option.value === size)?.amountLabel,
+        image: imagesBySize?.[size] ?? image,
+        ...imageOptionsBySize?.[size],
         price,
       }))
     ),
@@ -41,7 +54,7 @@ const clientSizes = [
   { value: "16", label: "O, divno 16", amountLabel: "16 komada" },
 ];
 
-function createThankYouProduct({ kind, image }) {
+function createThankYouProduct({ kind, image, pairImage }) {
   const isMrsni = kind === "mrsni";
   const choices = isMrsni
     ? [...baklavaChoices, { value: "urmasice", label: "Urmašice" }]
@@ -54,6 +67,7 @@ function createThankYouProduct({ kind, image }) {
       options: { prviUkus: first.value, pakovanje: "hvala-1" },
       name: kind === "posni" ? "Posni program" : "Mrsni program",
       amountLabel: "Hvala 1",
+      image,
       selectionLabel: `${first.label} · Hvala 1`,
       price: first.value === "urmasice" ? 90 : 140,
     });
@@ -71,6 +85,7 @@ function createThankYouProduct({ kind, image }) {
         },
         name: kind === "posni" ? "Posni program" : "Mrsni program",
         amountLabel: "Hvala vam 2",
+        image: pairImage,
         selectionLabel: `${first.label} + ${second.label} · Hvala vam 2`,
         price:
           firstIsUrmasice && secondIsUrmasice
@@ -88,7 +103,6 @@ function createThankYouProduct({ kind, image }) {
     id: `pokloni-${kind}`,
     name: kind === "posni" ? "Posni program" : "Mrsni program",
     image,
-    imageLayout: "portrait",
     imageLayout: "portrait",
     optionGroups: [
       { id: "prviUkus", label: "Prvi ukus", choices, column: "left" },
@@ -123,7 +137,11 @@ const program = (occasion, kind, config) =>
 export const products = {
   slava: [
     program("slava", "posni", {
-      image: "/assets/img/menu/menu-item-1.png",
+      image: "/assets/img/menu/slavim_slavu_imam_goste/Slavsko_malo_posno.webp",
+      imagesBySize: {
+        half: "/assets/img/menu/slavim_slavu_imam_goste/Slavsko_malo_posno.webp",
+        full: "/assets/img/menu/slavim_slavu_imam_goste/Slavsko_standard_posno.webp",
+      },
       typeChoices: baklavaChoices,
       sizes: kilogramSizes,
       prices: {
@@ -133,7 +151,11 @@ export const products = {
       },
     }),
     program("slava", "mrsni", {
-      image: "/assets/img/menu/menu-item-3.png",
+      image: "/assets/img/menu/slavim_slavu_imam_goste/Slavsko_malo_mrsno.webp",
+      imagesBySize: {
+        half: "/assets/img/menu/slavim_slavu_imam_goste/Slavsko_malo_mrsno.webp",
+        full: "/assets/img/menu/slavim_slavu_imam_goste/Slavsko_standard_mrsno.webp",
+      },
       typeChoices: [...baklavaChoices, { value: "urmasice", label: "Urmašice" }],
       sizes: kilogramSizes,
       prices: {
@@ -146,7 +168,15 @@ export const products = {
   ],
   "svaki-dan": [
     program("svaki-dan", "posni", {
-      image: "/assets/img/menu/baklavasroutker.600x434.jpg",
+      image:
+        "/assets/img/menu/zelim_da_zasladim_dan/zelim_da_zasladim_dan_malac_posno.webp",
+      imagesBySize: {
+        malac:
+          "/assets/img/menu/zelim_da_zasladim_dan/zelim_da_zasladim_dan_malac_posno.webp",
+        tamanica:
+          "/assets/img/menu/zelim_da_zasladim_dan/zelim_da_zasladim_dan_tamanica_posno.webp",
+      },
+      imageOptionsBySize: { tamanica: { imageRotation: 90 } },
       typeChoices: baklavaChoices,
       sizes: dailySizes,
       prices: {
@@ -156,7 +186,18 @@ export const products = {
       },
     }),
     program("svaki-dan", "mrsni", {
-      image: "/assets/img/menu/menu-item-5.png",
+      image:
+        "/assets/img/menu/zelim_da_zasladim_dan/zelim_da_zasladim_dan_malac_mrsno.webp",
+      imagesBySize: {
+        malac:
+          "/assets/img/menu/zelim_da_zasladim_dan/zelim_da_zasladim_dan_malac_mrsno.webp",
+        tamanica:
+          "/assets/img/menu/zelim_da_zasladim_dan/zelim_da_zasladim_dan_tamanica_mrsno.webp",
+      },
+      imageOptionsBySize: {
+        malac: { imageFit: "cover", imagePosition: "center 63%" },
+        tamanica: { imageRotation: 90 },
+      },
       typeChoices: [...baklavaChoices, { value: "urmasice", label: "Urmašice" }],
       sizes: dailySizes,
       prices: {
@@ -169,7 +210,16 @@ export const products = {
   ],
   klijenti: [
     program("klijenti", "posni", {
-      image: "/assets/img/menu/menu-item-1s.png",
+      image: "/assets/img/menu/poslovni_partneri/mala_paznja.webp",
+      imagesBySize: {
+        4: "/assets/img/menu/poslovni_partneri/mala_paznja.webp",
+        9: "/assets/img/menu/poslovni_partneri/paznja.webp",
+        16: "/assets/img/menu/poslovni_partneri/o_divno.webp",
+      },
+      imageOptionsBySize: {
+        4: { imageRotation: 90 },
+        9: { imageRotation: 90 },
+      },
       typeChoices: baklavaChoices,
       sizes: clientSizes,
       prices: {
@@ -179,7 +229,11 @@ export const products = {
       },
     }),
     program("klijenti", "mrsni", {
-      image: "/assets/img/menu/menu-item-3s.png",
+      image: "/assets/img/menu/poslovni_partneri/poslovni_partneri_mrsno.webp",
+      images: [
+        "/assets/img/menu/poslovni_partneri/poslovni_partneri_mrsno.webp",
+        "/assets/img/menu/poslovni_partneri/poslovni_partneri_posno.webp",
+      ],
       typeChoices: baklavaChoices,
       sizes: clientSizes,
       prices: {
@@ -190,8 +244,18 @@ export const products = {
     }),
   ],
   pokloni: [
-    createThankYouProduct({ kind: "posni", image: "/assets/img/baklava1.jpg" }),
-    createThankYouProduct({ kind: "mrsni", image: "/assets/img/urmasica1.jpg" }),
+    createThankYouProduct({
+      kind: "posni",
+      image: "/assets/img/menu/poklon_zahvalnice/poklon_zahvalnice_posni_program.webp",
+      pairImage:
+        "/assets/img/menu/poklon_zahvalnice/poklon_zahvalnice_2kom_posni_program.webp",
+    }),
+    createThankYouProduct({
+      kind: "mrsni",
+      image: "/assets/img/menu/poklon_zahvalnice/poklon_zahvalnice_mrsni_program.webp",
+      pairImage:
+        "/assets/img/menu/poklon_zahvalnice/poklon_zahvalnice_2kom_mrsni_program.webp",
+    }),
   ],
   "poseban-poklon": [],
 };
