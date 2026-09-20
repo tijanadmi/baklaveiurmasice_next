@@ -14,11 +14,11 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/img/og-biu.jpg",
-        width: 1200,
-        height: 630,
-        type: "image/jpeg",
-        alt: "Baklave i urmašice na poslužavniku",
+        url: "/assets/img/hero/hero-naslovna1-krug.png",
+        width: 1024,
+        height: 1024,
+        type: "image/png",
+        alt: "Baklava i urmašica sa orasima na tanjiru",
       },
     ],
   },
@@ -26,7 +26,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Baklave i urmašice",
     description: "Domaće baklave i urmašice, pripremljene po porodičnom receptu.",
-    images: ["/assets/img/og-biu.jpg"],
+    images: ["/assets/img/hero/hero-naslovna1-krug.png"],
   },
   icons: {
     icon: "/assets/img/favicon.png",
