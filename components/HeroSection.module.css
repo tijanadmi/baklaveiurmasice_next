@@ -117,8 +117,12 @@
 
 @media (max-width: 760px) {
   .section:global(.hero) {
-    padding: 24px 5vw 28px;
-    gap: 10px;
+    min-height: calc(100svh - 76px);
+    min-height: calc(100dvh - 76px);
+    grid-template-rows: max-content max-content;
+    align-content: space-evenly;
+    padding: clamp(20px, 3svh, 32px) 5vw;
+    gap: clamp(16px, 3svh, 28px);
   }
 
   .section :global(.hero-copy) {
@@ -137,15 +141,15 @@
   .section :global(.lead) {
     font-size: 1rem;
     line-height: 1.5;
-    margin: 12px auto 0;
+    margin: 16px auto 0;
   }
 
   .section :global(.actions) {
-    margin-top: 18px;
+    margin-top: 22px;
   }
 
   .carousel {
-    width: min(100%, calc(clamp(170px, 30svh, 240px) + 76px));
+    width: min(calc(100% + 20px), calc(clamp(220px, 38svh, 330px) + 76px));
     justify-self: center;
     padding-bottom: 32px;
   }
