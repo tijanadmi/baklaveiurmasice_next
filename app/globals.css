@@ -2208,10 +2208,34 @@ nav a:hover::after {
   }
   .delivery-content {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .section.delivery-section {
+    min-height: calc(100svh - 76px);
+    min-height: calc(100dvh - 76px);
+    display: grid;
+    align-content: space-evenly;
+    padding: clamp(24px, 4svh, 36px) 20px;
+    scroll-margin-top: 76px;
+  }
+  .delivery-section > * {
+    width: 100%;
+  }
+  .delivery-section .section-heading h2 {
+    font-size: clamp(1.4rem, 5.6vw, 1.8rem);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .delivery-section .eyebrow {
+    font-size: 0.65rem;
+    margin-bottom: 8px;
   }
   .delivery-map {
     height: auto;
     min-height: 0;
+    width: min(100%, 508px);
+    justify-self: center;
+    border-radius: 18px;
   }
   .delivery-map-image {
     position: static;
@@ -2220,6 +2244,18 @@ nav a:hover::after {
   }
   .delivery-copy {
     padding-block: 0;
+  }
+  .delivery-copy p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .delivery-copy ul {
+    gap: 8px;
+  }
+  .delivery-copy li {
+    font-size: 0.9375rem;
+    line-height: 1.45;
   }
   .about-grid img {
     box-shadow:
