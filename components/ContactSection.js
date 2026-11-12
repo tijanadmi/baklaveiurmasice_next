@@ -43,7 +43,7 @@ export default function ContactSection() {
   return (
     <section id="contact" className="section contact" data-reveal>
       <div className="section-heading section-heading-left">
-        <p className="eyebrow">Kontaktirajte nas</p>
+        <p className="eyebrow eyebrow-no-marker">Kontaktirajte nas</p>
         <h2>Imate pitanje? Pišite nam.</h2>
         <p className="contact-intro">
           Odgovor stiže, a vaši slatki zalogaji su <a href="#menu">ovde</a>.

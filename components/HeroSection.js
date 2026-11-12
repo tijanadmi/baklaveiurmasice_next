@@ -82,7 +82,7 @@ export default function HeroSection() {
           aria-label="Prethodna fotografija"
           aria-controls="hero-photos"
         >
-          ←
+          ❮
         </button>
         <button
           type="button"
@@ -91,7 +91,7 @@ export default function HeroSection() {
           aria-label="Sledeća fotografija"
           aria-controls="hero-photos"
         >
-          →
+          ❯
         </button>
         <div className={styles.dots}>
           {photos.map((photo, index) => (

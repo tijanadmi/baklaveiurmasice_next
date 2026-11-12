@@ -20,7 +20,8 @@ export default function ProductCard({ product, occasion }) {
   const hasImageFrame = ["slava", "svaki-dan", "pokloni", "klijenti"].includes(
     occasion.id
   );
-  const rotateImage = occasion.id === "slava" || selectedVariant?.imageRotation === 90;
+  const rotateImage = selectedVariant?.imageRotation === 90;
+  const activeImages = selectedVariant?.images ?? product.images;
 
   function choiceIsAvailable(groupId, choiceValue) {
     return product.variants.some(
@@ -30,6 +31,16 @@ export default function ProductCard({ product, occasion }) {
           ([key, value]) => key === groupId || selection[key] === value
         )
     );
+  }
+
+  function showPreviousPhoto() {
+    setPhotoIndex((currentIndex) =>
+      currentIndex === 0 ? activeImages.length - 1 : currentIndex - 1
+    );
+  }
+
+  function showNextPhoto() {
+    setPhotoIndex((currentIndex) => (currentIndex + 1) % activeImages.length);
   }
 
   const hasCustomQuantity = Boolean(product.customQuantity);
@@ -82,17 +93,23 @@ export default function ProductCard({ product, occasion }) {
 
   return (
     <article className="product">
-      <div className={hasImageFrame ? "product-package-frame" : undefined}>
+      <div
+        className={
+          hasImageFrame
+            ? `product-package-frame${activeImages?.length > 1 ? " product-package-frame-gallery" : ""}`
+            : undefined
+        }
+      >
         <div
           className={
             hasImageFrame
-              ? `product-package-photo${rotateImage ? " product-package-photo-rotated" : ""}`
+              ? `product-package-photo${activeImages?.length > 1 ? " product-package-photo-gallery" : ""}${rotateImage ? " product-package-photo-rotated" : ""}`
               : undefined
           }
         >
           <img
             className={product.imageLayout === "portrait" ? "product-image-portrait" : ""}
-            src={product.images?.[photoIndex] ?? selectedVariant?.image ?? product.image}
+            src={activeImages?.[photoIndex] ?? selectedVariant?.image ?? product.image}
             alt={`${product.name}${selectedVariant?.amountLabel ? ` — ${selectedVariant.amountLabel}` : ""}`}
             loading="lazy"
             style={{
@@ -100,26 +117,31 @@ export default function ProductCard({ product, occasion }) {
               objectPosition: selectedVariant?.imagePosition,
             }}
           />
+          {activeImages?.length > 1 && (
+            <>
+              <button
+                className="product-photo-arrow product-photo-arrow-previous"
+                type="button"
+                onClick={showPreviousPhoto}
+                aria-label="Prethodna fotografija"
+              >
+                <span aria-hidden="true">❮</span>
+              </button>
+              <span className="product-photo-count" aria-live="polite">
+                {photoIndex + 1} / {activeImages.length}
+              </span>
+              <button
+                className="product-photo-arrow product-photo-arrow-next"
+                type="button"
+                onClick={showNextPhoto}
+                aria-label="Sledeća fotografija"
+              >
+                <span aria-hidden="true">❯</span>
+              </button>
+            </>
+          )}
         </div>
       </div>
-      {product.images?.length > 1 && (
-        <div
-          className="product-photo-picker"
-          role="group"
-          aria-label="Fotografije proizvoda"
-        >
-          {product.images.map((src, index) => (
-            <button
-              key={src}
-              type="button"
-              aria-pressed={photoIndex === index}
-              onClick={() => setPhotoIndex(index)}
-            >
-              Fotografija {index + 1}
-            </button>
-          ))}
-        </div>
-      )}
       <div className="product-content">
         <h3>{product.name}</h3>
 
@@ -145,12 +167,13 @@ export default function ProductCard({ product, occasion }) {
                         className={`choice-pill ${isSelected ? "selected" : ""}`}
                         disabled={isDisabled}
                         aria-pressed={isSelected}
-                        onClick={() =>
+                        onClick={() => {
                           setSelection((currentSelection) => ({
                             ...currentSelection,
                             [group.id]: choice.value,
-                          }))
-                        }
+                          }));
+                          setPhotoIndex(0);
+                        }}
                       >
                         {choice.label}
                       </button>

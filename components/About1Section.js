@@ -6,7 +6,7 @@ export default function About1Section() {
       </div>
 
       <div className="about-story-header section-heading-left">
-        <p className="eyebrow">Naša priča</p>
+        <p className="eyebrow eyebrow-no-marker">Naša priča</p>
         <h2>Malo o nama</h2>
         <p className="about-story-lead">
           Miris <strong>baklava i urmašica</strong> za nas nikada nije bio samo miris

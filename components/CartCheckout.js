@@ -59,7 +59,7 @@ export default function CartCheckout() {
   return (
     <section id="cart" className="section cart-section">
       <div className="section-heading section-heading-left">
-        <p className="eyebrow">Korpa</p>
+        <p className="eyebrow eyebrow-no-marker">Ovo ste izabrali</p>
         <h2>Pregled porudžbine</h2>
         <p>Izaberite proizvode i pošaljite nam detalje za dostavu.</p>
       </div>
@@ -130,7 +130,7 @@ export default function CartCheckout() {
                     stroke="#dfc8a5"
                   />
                 </svg>
-                <h3>Korpa je prazna</h3>
+                <h3>Još ništa niste izabrali</h3>
                 <p>
                   Izaberite proizvode iz menija i ovde će se pojaviti pregled porudžbine.
                 </p>

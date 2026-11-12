@@ -40,7 +40,7 @@ export default function GallerySection() {
       <div className={styles.inner}>
         <div className={styles.heading}>
           <div>
-            <p className="eyebrow">IZ NAŠE RADIONICE</p>
+            <p className="eyebrow eyebrow-no-marker">IZ NAŠE RADIONICE</p>
             <h2 id="gallery-title">
               Mali zalogaji, <span>lepi trenuci</span>
             </h2>

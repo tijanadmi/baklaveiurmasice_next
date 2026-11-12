@@ -10,6 +10,7 @@ function createProduct({
   image,
   images,
   imagesBySize,
+  imagesByTypeAndSize,
   imageOptionsBySize,
   typeChoices,
   sizes,
@@ -25,18 +26,81 @@ function createProduct({
       { id: "velicina", label: "Količina / veličina", choices: sizes },
     ],
     variants: Object.entries(prices).flatMap(([type, sizePrices]) =>
-      Object.entries(sizePrices).map(([size, price]) => ({
-        id: `${type}-${size}`,
-        options: { vrsta: type, velicina: size },
-        name,
-        amountLabel: sizes.find((option) => option.value === size)?.amountLabel,
-        image: imagesBySize?.[size] ?? image,
-        ...imageOptionsBySize?.[size],
-        price,
-      }))
+      Object.entries(sizePrices).map(([size, price]) => {
+        const variantImages = imagesByTypeAndSize?.[type]?.[size];
+
+        return {
+          id: `${type}-${size}`,
+          options: { vrsta: type, velicina: size },
+          name,
+          amountLabel: sizes.find((option) => option.value === size)?.amountLabel,
+          image: variantImages?.[0] ?? imagesBySize?.[size] ?? image,
+          images: variantImages,
+          ...imageOptionsBySize?.[size],
+          price,
+        };
+      })
     ),
   };
 }
+
+const slavaImageRoot = "/assets/img/menu/slavim_slavu_imam_goste";
+
+const slavaBaklavaImages = {
+  half: [
+    "DSC_0096.JPG",
+    "DSC_0098.JPG",
+    "DSC_0099.JPG",
+    "DSC_0105.JPG",
+    "DSC_0106.JPG",
+  ].map((file) => `${slavaImageRoot}/baklave_slavsko_malo_0.5_kg/${file}`),
+  full: [
+    "DSC_0108.JPG",
+    "DSC_0113.JPG",
+    "DSC_0118.JPG",
+    "DSC_0119.JPG",
+    "DSC_0120.JPG",
+    "DSC_0123.JPG",
+  ].map((file) => `${slavaImageRoot}/baklave_slavsko_standard_1_kg/${file}`),
+};
+
+const slavaUrmasiceImages = {
+  half: [
+    "DSC_0162.JPG",
+    "DSC_0164.JPG",
+    "DSC_0166.JPG",
+    "DSC_0168.JPG",
+    "DSC_0170.JPG",
+    "DSC_0171.JPG",
+  ].map((file) => `${slavaImageRoot}/urmasice_slavsko_malo_0.5_kg/${file}`),
+  full: [
+    "DSC_0125.JPG",
+    "DSC_0127.JPG",
+    "DSC_0129.JPG",
+    "DSC_0131.JPG",
+    "DSC_0136.JPG",
+  ].map((file) => `${slavaImageRoot}/urmasice_slavsko_standardno_1_kg/${file}`),
+};
+
+const slatkiPredahImageRoot = "/assets/img/menu/zelim_da_zasladim_dan";
+
+const slatkiPredahBaklavaImages = {
+  malac: ["1.JPG", "2.JPG", "3.JPG", "4.JPG", "5.JPG"].map(
+    (file) => `${slatkiPredahImageRoot}/baklava_malac_16_kom/${file}`
+  ),
+  tamanica: ["1.JPG", "2.JPG", "3.JPG", "4.JPG"].map(
+    (file) => `${slatkiPredahImageRoot}/baklava_tamanica_20_kom/${file}`
+  ),
+};
+
+const slatkiPredahUrmasiceImages = {
+  malac: ["1.JPG", "2.JPG", "3.JPG", "4.JPG", "5.JPG"].map(
+    (file) => `${slatkiPredahImageRoot}/urmasice_malac_16_kom/${file}`
+  ),
+  tamanica: ["1.JPG", "2.JPG", "3.JPG", "4.JPG"].map(
+    (file) => `${slatkiPredahImageRoot}/urmasice_tamanica_20_kom/${file}`
+  ),
+};
 
 const kilogramSizes = [
   { value: "half", label: "Malo pakovanje-1/2kg", amountLabel: "1/2 kg" },
@@ -137,10 +201,11 @@ const program = (occasion, kind, config) =>
 export const products = {
   slava: [
     program("slava", "posni", {
-      image: "/assets/img/menu/slavim_slavu_imam_goste/Slavsko_malo_posno.webp",
-      imagesBySize: {
-        half: "/assets/img/menu/slavim_slavu_imam_goste/Slavsko_malo_posno.webp",
-        full: "/assets/img/menu/slavim_slavu_imam_goste/Slavsko_standard_posno.webp",
+      image: slavaBaklavaImages.half[0],
+      imagesByTypeAndSize: {
+        orasi: slavaBaklavaImages,
+        lesnici: slavaBaklavaImages,
+        pistaci: slavaBaklavaImages,
       },
       typeChoices: baklavaChoices,
       sizes: kilogramSizes,
@@ -151,10 +216,12 @@ export const products = {
       },
     }),
     program("slava", "mrsni", {
-      image: "/assets/img/menu/slavim_slavu_imam_goste/Slavsko_malo_mrsno.webp",
-      imagesBySize: {
-        half: "/assets/img/menu/slavim_slavu_imam_goste/Slavsko_malo_mrsno.webp",
-        full: "/assets/img/menu/slavim_slavu_imam_goste/Slavsko_standard_mrsno.webp",
+      image: slavaBaklavaImages.half[0],
+      imagesByTypeAndSize: {
+        orasi: slavaBaklavaImages,
+        lesnici: slavaBaklavaImages,
+        pistaci: slavaBaklavaImages,
+        urmasice: slavaUrmasiceImages,
       },
       typeChoices: [...baklavaChoices, { value: "urmasice", label: "Urmašice" }],
       sizes: kilogramSizes,
@@ -168,15 +235,12 @@ export const products = {
   ],
   "svaki-dan": [
     program("svaki-dan", "posni", {
-      image:
-        "/assets/img/menu/zelim_da_zasladim_dan/zelim_da_zasladim_dan_malac_posno.webp",
-      imagesBySize: {
-        malac:
-          "/assets/img/menu/zelim_da_zasladim_dan/zelim_da_zasladim_dan_malac_posno.webp",
-        tamanica:
-          "/assets/img/menu/zelim_da_zasladim_dan/zelim_da_zasladim_dan_tamanica_posno.webp",
+      image: slatkiPredahBaklavaImages.malac[0],
+      imagesByTypeAndSize: {
+        orasi: slatkiPredahBaklavaImages,
+        lesnici: slatkiPredahBaklavaImages,
+        pistaci: slatkiPredahBaklavaImages,
       },
-      imageOptionsBySize: { tamanica: { imageRotation: 90 } },
       typeChoices: baklavaChoices,
       sizes: dailySizes,
       prices: {
@@ -186,17 +250,12 @@ export const products = {
       },
     }),
     program("svaki-dan", "mrsni", {
-      image:
-        "/assets/img/menu/zelim_da_zasladim_dan/zelim_da_zasladim_dan_malac_mrsno.webp",
-      imagesBySize: {
-        malac:
-          "/assets/img/menu/zelim_da_zasladim_dan/zelim_da_zasladim_dan_malac_mrsno.webp",
-        tamanica:
-          "/assets/img/menu/zelim_da_zasladim_dan/zelim_da_zasladim_dan_tamanica_mrsno.webp",
-      },
-      imageOptionsBySize: {
-        malac: { imageFit: "cover", imagePosition: "center 63%" },
-        tamanica: { imageRotation: 90 },
+      image: slatkiPredahBaklavaImages.malac[0],
+      imagesByTypeAndSize: {
+        orasi: slatkiPredahBaklavaImages,
+        lesnici: slatkiPredahBaklavaImages,
+        pistaci: slatkiPredahBaklavaImages,
+        urmasice: slatkiPredahUrmasiceImages,
       },
       typeChoices: [...baklavaChoices, { value: "urmasice", label: "Urmašice" }],
       sizes: dailySizes,

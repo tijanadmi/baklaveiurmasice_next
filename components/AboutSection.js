@@ -47,9 +47,11 @@ export default function AboutSection() {
       <div className={styles.inner}>
         <div className={styles.heading}>
           <div>
-            <p className={styles.eyebrow}>BIRATE PAŽLJIVO? I MI ISTO</p>
+            <p className={`${styles.eyebrow} eyebrow-no-marker`}>
+              BIRATE PAŽLJIVO? I MI ISTO
+            </p>
             <h2 id="about-title" className={styles.title}>
-              Zašto baš naše <span>baklave i urmašice</span>
+              Zašto naše <span>baklave i urmašice</span>
             </h2>
           </div>
           <p className={styles.intro}>

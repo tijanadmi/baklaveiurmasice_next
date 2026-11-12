@@ -15,9 +15,9 @@ export default function MenuSection() {
   return (
     <section id="menu" className="section menu-section" data-reveal>
       <div className="section-heading section-heading-left">
-        <p className="eyebrow">IZVOLITE, BIRAJTE BAKLAVE I URMAŠICE</p>
+        <p className="eyebrow eyebrow-no-marker">IZVOLITE, BIRAJTE BAKLAVE I URMAŠICE</p>
         <h2>Koja situacija je danas vaša?</h2>
-        <details className="menu-details menu-details-intro">
+        <details id="ingredients" className="menu-details menu-details-intro">
           <summary>Kako pripremamo naše slatkiše?</summary>
           <p>
             Baklave pravimo od pšeničnih kora, mlevenih i seckanih orašastih plodova,

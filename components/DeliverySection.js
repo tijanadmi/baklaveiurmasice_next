@@ -2,7 +2,7 @@ export default function DeliverySection() {
   return (
     <section id="delivery" className="section delivery-section" data-reveal>
       <div className="section-heading section-heading-left">
-        <p className="eyebrow">BESPLATNA DOSTAVA</p>
+        <p className="eyebrow eyebrow-no-marker">BESPLATNA DOSTAVA</p>
         <h2>
           Dostava je uključena <span>u crvenoj zoni</span>
         </h2>

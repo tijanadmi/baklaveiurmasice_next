@@ -18,10 +18,10 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
+        <TestimonialsSection />
         <AboutSection />
         <MenuSection />
         <DeliverySection />
-        <TestimonialsSection />
         <About1Section />
         <GallerySection />
         <CartCheckout />

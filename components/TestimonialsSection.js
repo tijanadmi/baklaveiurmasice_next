@@ -19,7 +19,7 @@ export default function TestimonialsSection() {
   return (
     <section id="testimonials" className={styles.section} data-reveal>
       <div className="section-heading section-heading-left">
-        <p className="eyebrow">HVALA NA POVERENJU</p>
+        <p className="eyebrow eyebrow-no-marker">HVALA NA POVERENJU</p>
         <h2>
           Najlepše preporuke dolaze <span>od onih koji nam se vraćaju</span>
         </h2>
@@ -37,7 +37,7 @@ export default function TestimonialsSection() {
           }
           aria-label="Prethodno mišljenje"
         >
-          ←
+          ❮
         </button>
         <div className={styles.panel}>
           <div className={styles.photo}>
@@ -88,7 +88,7 @@ export default function TestimonialsSection() {
           onClick={() => setActiveReview((activeReview + 1) % reviews.length)}
           aria-label="Sledeće mišljenje"
         >
-          →
+          ❯
         </button>
         <div className="carousel-dots">
           {reviews.map((review, index) => (
