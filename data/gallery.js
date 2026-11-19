@@ -209,4 +209,10 @@ export const galleryPhotos = [
     height: 5712,
     alt: "Baklave i urmašice — fotografija 35",
   },
+  {
+    src: "/assets/img/gallery/DSC_0450.JPG",
+    width: 6000,
+    height: 4000,
+    alt: "Poklon-kutija sa baklavama i žutim cvećem",
+  },
 ];

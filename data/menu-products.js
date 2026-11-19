@@ -64,6 +64,13 @@ const slavaBaklavaImages = {
   ].map((file) => `${slavaImageRoot}/baklave_slavsko_standard_1_kg/${file}`),
 };
 
+const slavaMrsnaBaklavaImages = Object.fromEntries(
+  Object.entries(slavaBaklavaImages).map(([size, images]) => [
+    size,
+    [...images].reverse(),
+  ])
+);
+
 const slavaUrmasiceImages = {
   half: [
     "DSC_0162.JPG",
@@ -93,6 +100,13 @@ const slatkiPredahBaklavaImages = {
   ),
 };
 
+const slatkiPredahMrsnaBaklavaImages = Object.fromEntries(
+  Object.entries(slatkiPredahBaklavaImages).map(([size, images]) => [
+    size,
+    [...images].reverse(),
+  ])
+);
+
 const slatkiPredahUrmasiceImages = {
   malac: ["1.JPG", "2.JPG", "3.JPG", "4.JPG", "5.JPG"].map(
     (file) => `${slatkiPredahImageRoot}/urmasice_malac_16_kom/${file}`
@@ -101,6 +115,27 @@ const slatkiPredahUrmasiceImages = {
     (file) => `${slatkiPredahImageRoot}/urmasice_tamanica_20_kom/${file}`
   ),
 };
+
+const poslovniPokloniImageRoot = "/assets/img/menu/poslovni_partneri";
+
+const poslovniPokloniPosniImages = {
+  4: ["1.jpg", "2.jpg", "3.jpg", "4.jpg"].map(
+    (file) => `${poslovniPokloniImageRoot}/poslovni_pokloni_mala_paznja_4_kom/${file}`
+  ),
+  9: ["1.jpg", "2.jpg", "3.jpg", "4.jpg"].map(
+    (file) => `${poslovniPokloniImageRoot}/poslovni_pokloni_paznja_9_kom/${file}`
+  ),
+  16: ["1.jpg", "2.JPG", "3.jpg", "4.JPG", "5.JPG"].map(
+    (file) => `${poslovniPokloniImageRoot}/poslovni_pokloni_o_divno_16_kom/${file}`
+  ),
+};
+
+const poslovniPokloniMrsniImages = Object.fromEntries(
+  Object.entries(poslovniPokloniPosniImages).map(([size, images]) => [
+    size,
+    [...images].reverse(),
+  ])
+);
 
 const kilogramSizes = [
   { value: "half", label: "Malo pakovanje-1/2kg", amountLabel: "1/2 kg" },
@@ -216,11 +251,11 @@ export const products = {
       },
     }),
     program("slava", "mrsni", {
-      image: slavaBaklavaImages.half[0],
+      image: slavaMrsnaBaklavaImages.half[0],
       imagesByTypeAndSize: {
-        orasi: slavaBaklavaImages,
-        lesnici: slavaBaklavaImages,
-        pistaci: slavaBaklavaImages,
+        orasi: slavaMrsnaBaklavaImages,
+        lesnici: slavaMrsnaBaklavaImages,
+        pistaci: slavaMrsnaBaklavaImages,
         urmasice: slavaUrmasiceImages,
       },
       typeChoices: [...baklavaChoices, { value: "urmasice", label: "Urmašice" }],
@@ -250,11 +285,11 @@ export const products = {
       },
     }),
     program("svaki-dan", "mrsni", {
-      image: slatkiPredahBaklavaImages.malac[0],
+      image: slatkiPredahMrsnaBaklavaImages.malac[0],
       imagesByTypeAndSize: {
-        orasi: slatkiPredahBaklavaImages,
-        lesnici: slatkiPredahBaklavaImages,
-        pistaci: slatkiPredahBaklavaImages,
+        orasi: slatkiPredahMrsnaBaklavaImages,
+        lesnici: slatkiPredahMrsnaBaklavaImages,
+        pistaci: slatkiPredahMrsnaBaklavaImages,
         urmasice: slatkiPredahUrmasiceImages,
       },
       typeChoices: [...baklavaChoices, { value: "urmasice", label: "Urmašice" }],
@@ -269,15 +304,11 @@ export const products = {
   ],
   klijenti: [
     program("klijenti", "posni", {
-      image: "/assets/img/menu/poslovni_partneri/mala_paznja.webp",
-      imagesBySize: {
-        4: "/assets/img/menu/poslovni_partneri/mala_paznja.webp",
-        9: "/assets/img/menu/poslovni_partneri/paznja.webp",
-        16: "/assets/img/menu/poslovni_partneri/o_divno.webp",
-      },
-      imageOptionsBySize: {
-        4: { imageRotation: 90 },
-        9: { imageRotation: 90 },
+      image: poslovniPokloniPosniImages[4][0],
+      imagesByTypeAndSize: {
+        orasi: poslovniPokloniPosniImages,
+        lesnici: poslovniPokloniPosniImages,
+        pistaci: poslovniPokloniPosniImages,
       },
       typeChoices: baklavaChoices,
       sizes: clientSizes,
@@ -288,11 +319,12 @@ export const products = {
       },
     }),
     program("klijenti", "mrsni", {
-      image: "/assets/img/menu/poslovni_partneri/poslovni_partneri_mrsno.webp",
-      images: [
-        "/assets/img/menu/poslovni_partneri/poslovni_partneri_mrsno.webp",
-        "/assets/img/menu/poslovni_partneri/poslovni_partneri_posno.webp",
-      ],
+      image: poslovniPokloniMrsniImages[4][0],
+      imagesByTypeAndSize: {
+        orasi: poslovniPokloniMrsniImages,
+        lesnici: poslovniPokloniMrsniImages,
+        pistaci: poslovniPokloniMrsniImages,
+      },
       typeChoices: baklavaChoices,
       sizes: clientSizes,
       prices: {
